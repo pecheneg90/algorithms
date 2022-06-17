@@ -32,5 +32,4 @@ public interface StringListService {
 
     int getSize();
 
-    void printStringList();
 }
