@@ -13,7 +13,7 @@ public class Main {
         System.out.println(stringListService.add("Petr"));
         System.out.println(stringListService.add("Fedor"));
         System.out.println(stringListService.add("Nikita"));
-        System.out.println(stringListService.add("Mikhail"));
+        System.out.println(stringListService.add("Vladimir"));
         System.out.println(stringListService.add("Ivan"));
         System.out.println(stringListService.add("Victor"));
         System.out.println(stringListService.add("Petr"));

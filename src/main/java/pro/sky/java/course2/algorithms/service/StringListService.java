@@ -31,5 +31,4 @@ public interface StringListService {
     String[] getList();
 
     int getSize();
-
 }
