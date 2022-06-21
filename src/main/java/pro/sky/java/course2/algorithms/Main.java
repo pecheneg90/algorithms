@@ -68,7 +68,7 @@ public class Main {
         System.out.println("добавлен по индексу и по значению - " + integerListService.add(1, 8888));
         System.out.println("удален по индексу - " + integerListService.remove(0));
         System.out.println("изменен по индексу и по значению - " + integerListService.set(5, 1111));
-        System.out.println(integerListService.contains(2332));
+        System.out.println(integerListService.contains(8888));
         System.out.println(Arrays.toString(integerListService.getList()) + " - получен весь массив");
         System.out.println(integerListService.add(0, 4444) + " - добаввлен по индексу и по значению");
         System.out.println(integerListService.add(1, 5555) + " - добаввлен по индексу и по значению");
@@ -78,8 +78,12 @@ public class Main {
         System.out.println(integerListService.add(1, 3333) + " - добаввлен по индексу и по значению");
         System.out.println(integerListService.add(0, 7777) + " - добаввлен по индексу и по значению");
         System.out.println(integerListService.add(1, 9999) + " - добаввлен по индексу и по значению");
-        System.out.println(Arrays.toString(integerListService.getList()) + " - получен веь массив");
+        System.out.println(Arrays.toString(integerListService.getList()) + " - получен весь массив");
+        IntegerListServiceImpl.quickSort(integerListService.getList(), 0, integerListService.getSize() - 1);
+        System.out.println(Arrays.toString(integerListService.getList())
+                + "получен весь массив после быстрой (рекурсивной) сортировки)");
     }
+
     public static Integer[] generateRandomArray() {
         java.util.Random random = new java.util.Random();
         Integer[] arr = new Integer[10000];
@@ -114,8 +118,7 @@ public class Main {
 
     public static void main(String[] args) {
 //        strings();
-//        integers();
-        arraysIntegers();
-
+        integers();
+//        arraysIntegers();
     }
 }

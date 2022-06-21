@@ -36,7 +36,7 @@ public class StringListServiceImpl implements StringListService {
         itemNotNull(item);
         incorrectIndex(index);
         isArrayNotFull();
-        if (index!=size) {
+        if (index != size) {
             System.arraycopy(list, index, list, index + 1, size - index);
             list[index] = item;
             size++;
@@ -140,12 +140,14 @@ public class StringListServiceImpl implements StringListService {
             throw new IllegalArgumentException("Элемент не может быть нулевым");
         }
     }
+
     private void isArrayNotFull() {
         if (size == list.length) {
             list = extend();
         }
     }
+
     private String[] extend() {
-        return Arrays.copyOf(list, size+5);
+        return Arrays.copyOf(list, size + 5);
     }
 }

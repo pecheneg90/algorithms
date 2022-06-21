@@ -18,9 +18,11 @@ public class IntegerListServiceImpl implements IntegerListService {
     public Integer[] getList() {
         return list;
     }
+
     public Integer[] getListRandom(Integer[] arr) {
-     return arr;
+        return arr;
     }
+
     @Override
     public int getSize() {
         return size;
@@ -142,7 +144,7 @@ public class IntegerListServiceImpl implements IntegerListService {
 
     private boolean binarySearch(Integer item) {
         int min = 0;
-        int max = list.length - 1;
+        int max = size - 1;
         while (min <= max) {
             int mid = (min + max) / 2;
             if (Objects.equals(item, list[mid])) {
@@ -178,12 +180,12 @@ public class IntegerListServiceImpl implements IntegerListService {
 
     private void isArrayNotFull() {
         if (size == list.length) {
-            list = extend();
+            list = grow();
         }
     }
 
-    private Integer[] extend() {
-        return Arrays.copyOf(list, size + 5);
+    private Integer[] grow() {
+        return Arrays.copyOf(list, (int) (size * 1.5));
     }
 
     //сортировки
@@ -192,18 +194,6 @@ public class IntegerListServiceImpl implements IntegerListService {
         int tmp = data[indexA];
         data[indexA] = data[indexB];
         data[indexB] = tmp;
-    }
-
-    public static void sortSelection(Integer[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            int minElementIndex = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[minElementIndex]) {
-                    minElementIndex = j;
-                }
-            }
-            swapElements(arr, i, minElementIndex);
-        }
     }
 
 
@@ -227,5 +217,42 @@ public class IntegerListServiceImpl implements IntegerListService {
             }
             arr[j] = temp;
         }
+    }
+
+    public static void sortSelection(Integer[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minElementIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] < arr[minElementIndex]) {
+                    minElementIndex = j;
+                }
+            }
+            swapElements(arr, i, minElementIndex);
+        }
+    }
+
+    public static void quickSort(Integer[] list, int begin, int end) {
+        if (begin < end) {
+            int partitionIndex = partition(list, begin, end);
+
+            quickSort(list, begin, partitionIndex - 1);
+            quickSort(list, partitionIndex + 1, end);
+        }
+    }
+
+    private static int partition(Integer[] list, int begin, int end) {
+        int pivot = list[end];
+        int i = (begin - 1);
+
+        for (int j = begin; j < end; j++) {
+            if (list[j] <= pivot) {
+                i++;
+
+                swapElements(list, i, j);
+            }
+        }
+
+        swapElements(list, i + 1, end);
+        return i + 1;
     }
 }
